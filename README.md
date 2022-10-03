@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Athanasios
 - 👀 I’m interested in work as Software Engineer
 - 🌱 I’m currently studing in Hellenic Open University, Information Techology - Computer Science
-- 💞️ I’m looking to collaborate on Java and Python Software Developing
+- 💞️ I’m looking to collaborate on Java and Python Software Engineering
 - 📫 How to reach me: thanasis20007@gmail.com
 
 <!---
