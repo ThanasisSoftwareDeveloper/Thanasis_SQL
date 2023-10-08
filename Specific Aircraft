@@ -1,0 +1,1 @@
+SELECT * FROM FlightBook WHERE Aircraft_AircraftID = 'SX-1DEF';
