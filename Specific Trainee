@@ -1,0 +1,3 @@
+SELECT IF(COUNT(*) > 0, Surname, 'Καταχωρήστε τον Εκπαιδευόμενο') AS Result
+FROM Trainee
+WHERE AM = '11';
