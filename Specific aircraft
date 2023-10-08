@@ -1,0 +1,3 @@
+SELECT IF(COUNT(*) > 0, Model, 'Καταχωρήστε το Αεροσκάφος') AS Result
+FROM aircraft
+WHERE AircraftID = 'SX-KOF';
