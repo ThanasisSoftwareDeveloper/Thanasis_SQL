@@ -1,0 +1,19 @@
+---------------------------------
+Aircraft Availability 2nd way
+--------------------------------
+SELECT
+    Aircraft.AircraftID,
+    CASE
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) = '2023-06-22' THEN CONCAT('Μη διαθέσιμο για 10 μέρες από 2023-06-22')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext50 < 50 THEN CONCAT('Διαθέσιμο για ', 50 - FlightBook.HoursUntilNext50, ' ώρες ή για ', 365 - DATEDIFF('2023-06-22', DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR)), ' μέρες')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext50 = 50 THEN CONCAT('Μη διαθέσιμο για 1 μέρα')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext100 < 100 THEN CONCAT('Διαθέσιμο για ', 100 - FlightBook.HoursUntilNext100, ' ώρες ή για ', 365 - DATEDIFF('2023-06-22', DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR)), ' μέρες')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext100 = 100 THEN CONCAT('Μη διαθέσιμο για 3 μέρες')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext200 < 200 THEN CONCAT('Διαθέσιμο για ', 200 - FlightBook.HoursUntilNext200, ' ώρες ή για ', 365 - DATEDIFF('2023-06-22', DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR)), ' μέρες')
+        WHEN DATE_ADD(FlightBook.DateAnnualInspection, INTERVAL 1 YEAR) < '2023-06-22' AND FlightBook.HoursUntilNext200 = 200 THEN CONCAT('Μη διαθέσιμο για 5 μέρες')
+           
+        ELSE 'Παρακαλώ ελέγξτε τις καταχωρήσεις σας'
+    END AS Availability
+FROM
+    Aircraft
+    LEFT JOIN FlightBook ON Aircraft.AircraftID = FlightBook.Aircraft_AircraftID;
