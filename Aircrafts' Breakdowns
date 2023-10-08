@@ -1,0 +1,3 @@
+SELECT Trainee.Surname, FlightBook.Breakdown
+FROM Trainee
+JOIN FlightBook ON Trainee.AM = FlightBook.Trainee_AM;
